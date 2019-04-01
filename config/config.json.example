@@ -1,0 +1,30 @@
+{
+  "host": "",
+  "port": "8080",
+  "database": {
+    "name": "",
+    "host": "",
+    "port": "",
+    "user": "",
+    "password": "",
+    "option": {
+      "force": false,
+      "loggin": false
+    },
+    "model": {
+      "freezeTableName": true
+    }
+  },
+  "jwt": {
+    "salt": "",
+    "sessionLength": "1h"
+  },
+  "smtpConfig": {
+    "host": "",
+    "port": "",
+    "secure": false
+  },
+  "user": {
+    "saltRounds": 10
+  }
+}
