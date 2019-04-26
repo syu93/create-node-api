@@ -22,29 +22,43 @@ Version : ${package.version}
 inquirer.prompt([
   {
     type: 'input',
-    message: 'Chose the name of your project : ',
+    message: 'Choose a project name : ',
     name: 'packageName',
     default: path.basename(path.resolve('./'))
   }
 ]).then(initProject);
 
-async function initProject(responses) {
+function initProject(responses) {
+  log('info', "Copying template files ...");
   // Copy API file into current directory
   copy.sync(`${__dirname}/../src/template/`, `./`);
 
   let data = fs.readFileSync(`${__dirname}/../src/_package.json`, 'utf8');
 
-  if (!responses['packageName']) return console.log('[error] Your must provide a package name');
+  if (!responses['packageName']) return log('error', 'Your must provide a package name');
 
   // Replace package name
   const result = data.replace(/\[PROJECT_NAME\]/g, responses['packageName']);
 
   const newFile = fs.writeFileSync('./package.json', result, 'utf8');
 
-  if (newFile) return console.log(err);
+  if (newFile) return log('error', err);
 
   // Do execude npm add
-  console.log(`[info] I'm all done, intalling dependencies ...`);
-  await install(["nodemon"], { saveDev: true, stdio: 'inherit' });
-  await install(["express", "chalk", "winston"], { stdio: 'inherit' });
+  log('info', `I'm all done, intalling dependencies ...`);
+  install(["express", "chalk", "winston"], { saveDev: true, stdio: 'inherit' }, err => {
+    if (err) return log('error', err);
+    install(["nodemon"], { stdio: 'inherit' }, err => {
+      log('info', `Your are almost done ...`);
+      log('info', `Copy config file '${colors.green('config/config.json.example')}' into '${colors.green('config/config-dev.json')}'`);
+      log('info', `Then run : ${colors.green('npm run start')}`);
+    });
+  });
+}
+
+function log(level, message) {
+  if (level == "info") {
+    return console.log(`[${level}] ${message}`.cyan);
+  }
+  console.log(`[${level}] ${message}`.magenta);
 }
