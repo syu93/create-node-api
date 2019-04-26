@@ -1,5 +1,5 @@
 module.exports = app => {
   app.actions = {
-    part: require('./app')(app), // Load your action
+    app: require('./app')(app), // Load your action
   };
 };
