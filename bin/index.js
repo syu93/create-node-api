@@ -50,7 +50,7 @@ function initProject(responses) {
     if (err) return log('error', err);
     install(["nodemon"], { stdio: 'inherit' }, err => {
       log('info', `Your are almost done ...`);
-      log('info', `Copy config file '${colors.green('config/config.json.example')}' into '${colors.green('config/config-dev.json')}'`);
+      log('info', `Copy the config file ${colors.green('config/config.json.example')} ${colors.cyan('into')} ${colors.green('config/config-dev.json')}`);
       log('info', `Then run : ${colors.green('npm run start')}`);
     });
   });
@@ -58,7 +58,7 @@ function initProject(responses) {
 
 function log(level, message) {
   if (level == "info") {
-    return console.log(`[${level}] ${message}`.cyan);
+    return console.log(`[${level}] 🚀 ${message}`.cyan);
   }
-  console.log(`[${level}] ${message}`.magenta);
+  console.log(`[${level}] 🚧 ${message}`.magenta);
 }
