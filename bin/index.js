@@ -46,9 +46,9 @@ function initProject(responses) {
 
   // Do execude npm add
   log('info', `I'm all done, intalling dependencies ...`);
-  install(["express", "chalk", "winston"], { saveDev: true, stdio: 'inherit' }, err => {
+  install(["express", "chalk", "winston"], { stdio: 'inherit' }, err => {
     if (err) return log('error', err);
-    install(["nodemon"], { stdio: 'inherit' }, err => {
+    install(["nodemon"], { saveDev: true, stdio: 'inherit' }, err => {
       log('info', `Your are almost done ...`);
       log('info', `Copy the config file ${colors.green('config/config.json.example')} ${colors.cyan('into')} ${colors.green('config/config-dev.json')}`);
       log('info', `Then run : ${colors.green('npm run start')}`);
