@@ -4,7 +4,7 @@
 
 Create node API is a simple [npm initializer](https://docs.npmjs.com/cli/init) to bootstrap a simple yet well organised Node.js API using [Express](https://expressjs.com).
 
-Folder structure :
+## Folder structure :
 
 ```
 -- actions/
@@ -27,4 +27,16 @@ Folder structure :
 	-- app.js
 	-- index.js
 -- index.js
+```
+
+## Usage :
+
+```bash
+$ npm init syu93/create-node-api
+```
+
+or use **npx**
+
+```bash
+$ npx syu93/create-node-api
 ```
