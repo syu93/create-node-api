@@ -1,6 +1,6 @@
-![create-node-api]()
+![create-node-api](https://user-images.githubusercontent.com/6306574/56884735-f91cc280-6a6a-11e9-834f-a491a3f88353.png)
 
-# Create node API
+# Create node API
 
 Create node API is a simple [npm initializer](https://docs.npmjs.com/cli/init) to bootstrap a simple yet well organised Node.js API using [Express](https://expressjs.com).
 
